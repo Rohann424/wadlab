@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Application</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="box">
+
+        <div>
+            <h1>This is AJAX communication</h1>
+           
+    
+          <div class="box1" id="xyz"><p>My Section <br>
+                
+                <button class="btn" type="button" onclick="show()">Click Me</button>
+            </p>
+        
+            </div>
+    
+             <div class="box2" id="abcd">
+                <p> AJAX Section<br>
+                 <button class="btn" type="button" onclick="display()" > Request </button>
+                </p>
+                  </div>
+             <script> 
+             function show()
+             {
+                document.write("Clicked")
+                 //document.getElementById("xyz").innerHTML="Event Response generated"
+                 
+             }
+         function display()
+         {
+            // document.write("Display")
+            var req= new XMLHttpRequest()
+            req.onreadystatechange=function(){
+                     if(this.readyState==4 && this.status== 200){
+                         document.getElementById("abcd").innerHTML= 
+                         this.responseText
+                     }
+                 }
+                 req.open('GET','data.txt',true) /* open method to open connection to server with request   for a file 'data.txt' using GET method*/
+                 req.send() /* send request to server*/
+             }
+    </script>
+    </div>
+</body>
+</html>
